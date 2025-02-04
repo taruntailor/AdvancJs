@@ -1,0 +1,120 @@
+<!-- ● Create a form and validate using JavaScript -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form Validation Example</h2>
+  <form id="myForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+      <span class="error" id="usernameError"></span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" />
+      <span class="error" id="emailError"></span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+      <span class="error" id="passwordError"></span>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get input values
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Clear previous errors
+      document.getElementById("usernameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      let isValid = true;
+
+      // Validate username
+      if (username === "") {
+        document.getElementById("usernameError").textContent = "Username is required.";
+        isValid = false;
+      } else if (username.length < 3) {
+        document.getElementById("usernameError").textContent = "Username must be at least 3 characters long.";
+        isValid = false;
+      }
+
+      // Validate email
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (email === "") {
+        document.getElementById("emailError").textContent = "Email is required.";
+        isValid = false;
+      } else if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+        isValid = false;
+      }
+
+      // Validate password
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+      } else if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters long.";
+        isValid = false;
+      }
+
+      // If valid, show success message
+      if (isValid) {
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!-- ● Use external js library to show slider -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Include Swiper.js CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Include Swiper.js JavaScript -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</head>
+<style>
+    /* Swiper container dimensions */
+.swiper-container {
+  width: 100%;
+  height: 300px;
+}
+
+/* Slide styles */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+  background: #007bff; /* Example background */
+}
+
+</style>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+        </div>
+        <!-- Pagination (optional) -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation buttons (optional) -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Initialize Swiper
+          const swiper = new Swiper('.swiper-container', {
+            loop: true, // Enable looping
+            autoplay: {
+              delay: 3000, // Auto-slide every 3 seconds
+              disableOnInteraction: false, // Keep autoplay on user interaction
+            },
+            pagination: {
+              el: '.swiper-pagination', // Enable pagination
+              clickable: true, // Make pagination dots clickable
+            },
+            navigation: {
+              nextEl: '.swiper-button-next', // Next button
+              prevEl: '.swiper-button-prev', // Previous button
+            },
+          });
+        });
+      </script>
+      
+</body>
+</html>
+  

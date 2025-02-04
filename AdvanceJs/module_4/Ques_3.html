@@ -1,0 +1,41 @@
+<!--  Write a program of promises and handle that promises also -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Simulate an asynchronous task using a Promise
+function fetchData(success) {
+  return new Promise((resolve, reject) => {
+    console.log("Fetching data, please wait...");
+
+    // Simulate a delay (e.g., network request)
+    setTimeout(() => {
+      if (success) {
+        resolve("Data fetched successfully!");
+      } else {
+        reject("Error: Failed to fetch data.");
+      }
+    }, 2000);
+  });
+}
+
+// Handle the Promise
+fetchData(true) // Pass 'true' for success, 'false' for failure
+  .then((result) => {
+    console.log(result); // Handle the resolved state
+  })
+  .catch((error) => {
+    console.error(error); // Handle the rejected state
+  })
+  .finally(() => {
+    console.log("Fetch operation complete."); // Executes regardless of success or failure
+  });
+
+    </script>
+</body>
+</html>
